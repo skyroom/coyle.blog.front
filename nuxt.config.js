@@ -37,6 +37,7 @@ module.exports = {
         /*
     ** Run ESLint on save
     */
+        vendor: ['~/plugins/mavonEditor'],
         extend(config, {isDev, isClient}) {
             if (isDev && isClient) {
                 config.module.rules.push({enforce: 'pre', test: /\.(js|vue)$/, loader: 'eslint-loader', exclude: /(node_modules)/})
@@ -59,5 +60,8 @@ module.exports = {
                 }
             }
         }
-    }
+    },
+    plugins: [
+        { src: '~/plugins/mavonEditor', ssr: false }
+    ]
 }

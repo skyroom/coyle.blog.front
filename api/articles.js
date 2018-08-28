@@ -7,3 +7,10 @@ export const getArticlesViewList = (data) => {
         data: data
     });
 }
+
+export const getArticleById = (id) => {
+    return axios({
+        url: `http://localhost:3001/blog/article/${id}`,
+        method: 'get',
+    });
+}

@@ -1,7 +1,7 @@
 <template>
 <div class="article-view">
     <div class="article-title">
-        <router-link to="/">{{ article.title }}</router-link>
+        <router-link :to="`/article/${article._id}`">{{ article.title }}</router-link>
     </div>
     <div class="article-short" v-text="article.short"></div>
     <div class="article-footer">

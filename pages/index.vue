@@ -30,7 +30,7 @@ import {
 export default {
     data() {
         return {
-            searchKey: '你好',
+            searchKey: '',
         }
     },
     fetch ({ store, params }) {
