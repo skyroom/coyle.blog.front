@@ -7,7 +7,7 @@
     <div class="article-footer">
         <div class="article-footer-left">
             <img class="avator" :src="avatorSrc" />
-            <router-link to="/" class="author">{{ author }}</router-link>
+            <router-link to="/about" class="author">{{ author }}</router-link>
             <span class="time" v-text="article.createdAt"></span>
         </div>
         <div class="article-footer-right"></div>

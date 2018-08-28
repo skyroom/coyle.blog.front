@@ -4,7 +4,7 @@
         <div class="title" v-text="article.title"></div>
         <div class="adition">
             <img class="avator" :src="avatorSrc" />
-            <router-link to="/" class="author">{{ author }}</router-link>
+            <router-link to="/about" class="author">{{ author }}</router-link>
             <span class="time" v-text="article.createdAt"></span>
         </div>
         <div class="article-content">
@@ -89,7 +89,10 @@ export default {
 .adition .time {
     color: #7f8c8d;
 }
-.v-note-wrapper .v-note-panel.shadow {
+.article-content .v-note-wrapper .v-note-panel.shadow {
     box-shadow: none;
+}
+.article-content .v-note-wrapper .v-note-panel .v-note-show .v-show-content {
+    background: #fff;
 }
 </style>

@@ -1,9 +1,39 @@
 module.exports = {
+    modules: [
+        // '@nuxtjs/axios',
+        // '@nuxtjs/proxy',
+        '@gauseen/nuxt-proxy',
+    ],
+    proxyTable: {
+        '/blog': { 
+            target: 'http://localhost:3001', 
+            ws: false,
+            pathRewrite: {
+                '^/api': '',
+            },
+        }
+    },
+    // proxy: [
+    //     ['/api', {
+    //         target: 'http://localhost:3001', 
+    //         pathRewrite: {
+    //             '^/api': '',
+    //         },
+    //         changeOrigin: true,
+    //     }]
+    //     // '/api': {
+    //     //     target: 'http://localhost:3001',
+    //     //     pathRewrite: {
+    //     //         '^/api': '',
+    //     //     },
+    //     //     changeOrigin: true,
+    //     // },
+    // ],
     /*
   ** Headers of the page
   */
     head: {
-        title: 'coyle.blog.front',
+        title: 'Coyle.Blog',
         meta: [
             {
                 charset: 'utf-8'
@@ -37,31 +67,18 @@ module.exports = {
         /*
     ** Run ESLint on save
     */
-        vendor: ['~/plugins/mavonEditor'],
+        vendor: [
+            '~/plugins/mavonEditor',
+            '~/plugins/axios',
+        ],
         extend(config, {isDev, isClient}) {
             if (isDev && isClient) {
                 config.module.rules.push({enforce: 'pre', test: /\.(js|vue)$/, loader: 'eslint-loader', exclude: /(node_modules)/})
             }
         },
-        devServer: {
-            // host: '192.168.54.107',
-            // port: 8071,
-            // https: false,
-            // hotOnly: true,
-            open: false,
-            proxy: {
-                '/api': {
-                    target: 'http://localhost:3001',
-                    ws: true,
-                    changeOrigin: true,
-                    pathRewrite: {
-                        '/api': '' // remove base path
-                    }
-                }
-            }
-        }
     },
     plugins: [
-        { src: '~/plugins/mavonEditor', ssr: false }
+        { src: '~/plugins/mavonEditor', ssr: false },
+        { src: '~/plugins/axios', ssr: true }
     ]
 }

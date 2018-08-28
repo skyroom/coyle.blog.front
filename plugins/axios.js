@@ -1,4 +1,6 @@
 import Axios from 'axios'
+import VueAxios from 'vue-axios'
+import Vue from 'vue'
 import config from '../config'
 
 class httpRequest {
@@ -74,4 +76,5 @@ const httpR = new httpRequest();
 const axios = httpR.create();
 httpR.interceptors(axios);
 
-export default axios;
+Vue.use(VueAxios, axios)
+// export default axios;

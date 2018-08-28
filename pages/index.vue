@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import InfoView from '~/components/InfoView.vue'
 import ArticleView from '~/components/ArticleView.vue'
 import {
@@ -34,13 +35,27 @@ export default {
         }
     },
     fetch ({ store, params }) {
-        return store.dispatch('articles/getArticlesViewList')
-                    .then((res) => {
-                        // store.commit('setStars', res.data);
-                        // console.log('前台获取结果为', res);
-                    })
-                    .catch(() => {
-                    });
+        console.log('开始请求');
+        return Vue.axios({
+            // url: 'http://localhost:3001/blog/articles-view',
+            url: '/blog/articles-view',
+            method: 'post',
+            // data: data
+        })
+        .then((data) => {
+            console.log('data is', data);
+            // store.commit('articles/setArticlesViewlist', data.data);
+        })
+        .catch((err) => {
+            console.log('err is', err);
+        });
+        // return store.dispatch('articles/getArticlesViewList')
+        //             .then((res) => {
+        //                 // store.commit('setStars', res.data);
+        //                 // console.log('前台获取结果为', res);
+        //             })
+        //             .catch(() => {
+        //             });
     },
     components: {
         InfoView,

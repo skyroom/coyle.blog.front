@@ -4,11 +4,11 @@
         <li>
             <router-link to="/">首页</router-link>
         </li>
-        <li>
+        <!-- <li>
             <router-link to="/">归档</router-link>
-        </li>
+        </li> -->
         <li>
-            <router-link to="/">关于</router-link>
+            <router-link to="/about">关于</router-link>
         </li>
     </ul>
 </div>
