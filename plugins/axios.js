@@ -58,6 +58,9 @@ class httpRequest {
                 'Content-Type': 'application/json; charset=utf-8',
             }
         }
+        if (process.server) {
+            conf.baseURL = config.target;
+        }
         return Axios.create(conf)
     }
 

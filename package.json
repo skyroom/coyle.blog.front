@@ -5,11 +5,11 @@
   "author": "coyle <283362006@qq.com>",
   "private": true,
   "scripts": {
-    "devB": "nuxt",
-    "dev": "node server.js",
+    "dev": "nuxt",
+    "devB": "node server.js",
     "build": "nuxt build",
-    "startB": "nuxt start",
-    "start": "cross-env NODE_ENV=production node server.js",
+    "start": "nuxt start",
+    "startB": "cross-env NODE_ENV=production node server.js",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint"
@@ -17,6 +17,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "font-awesome": "^4.7.0",
+    "lodash": "^4.17.10",
     "mavon-editor": "^2.6.17",
     "nuxt": "^1.0.0",
     "vue": "^2.5.17",

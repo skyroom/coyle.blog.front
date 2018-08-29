@@ -27,6 +27,7 @@ import {
     mapMutations,
     mapActions
 } from 'vuex';
+import { debounce } from 'lodash';
 
 export default {
     data() {
@@ -36,26 +37,26 @@ export default {
     },
     fetch ({ store, params }) {
         console.log('开始请求');
-        return Vue.axios({
-            // url: 'http://localhost:3001/blog/articles-view',
-            url: '/blog/articles-view',
-            method: 'post',
-            // data: data
-        })
-        .then((data) => {
-            console.log('data is', data);
-            // store.commit('articles/setArticlesViewlist', data.data);
-        })
-        .catch((err) => {
-            console.log('err is', err);
-        });
-        // return store.dispatch('articles/getArticlesViewList')
-        //             .then((res) => {
-        //                 // store.commit('setStars', res.data);
-        //                 // console.log('前台获取结果为', res);
-        //             })
-        //             .catch(() => {
-        //             });
+        // return Vue.axios({
+        //     // url: 'http://localhost:3001/blog/articles-view',
+        //     url: '/blog/articles-view',
+        //     method: 'post',
+        //     // data: data
+        // })
+        // .then((data) => {
+        //     console.log('data is', data);
+        //     // store.commit('articles/setArticlesViewlist', data.data);
+        // })
+        // .catch((err) => {
+        //     console.log('err is', err);
+        // });
+        return store.dispatch('articles/getArticlesViewList')
+                    .then((res) => {
+                        // store.commit('setStars', res.data);
+                        // console.log('前台获取结果为', res);
+                    })
+                    .catch(() => {
+                    });
     },
     components: {
         InfoView,
@@ -71,8 +72,7 @@ export default {
         ...mapActions([
             'articles/getArticlesViewList',
         ]),
-        searchHandle() {
-            console.log('变化了。');
+        searchHandle: debounce(function() {
             this.$store.dispatch('articles/getArticlesViewList', {
                 title: this.searchKey,
             })
@@ -80,7 +80,7 @@ export default {
             })
             .catch(() => {
             });
-        },
+        }, 1000),
     },
     mounted() {
     }

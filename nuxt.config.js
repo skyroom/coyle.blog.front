@@ -1,34 +1,34 @@
 module.exports = {
     modules: [
-        // '@nuxtjs/axios',
-        // '@nuxtjs/proxy',
-        '@gauseen/nuxt-proxy',
+        '@nuxtjs/axios',
+        '@nuxtjs/proxy',
+        // '@gauseen/nuxt-proxy',
     ],
-    proxyTable: {
-        '/blog': { 
-            target: 'http://localhost:3001', 
-            ws: false,
-            pathRewrite: {
-                '^/api': '',
-            },
-        }
-    },
-    // proxy: [
-    //     ['/api', {
-    //         target: 'http://localhost:3001', 
+    // proxyTable: {
+    //     '/blog': {
+    //         target: 'http://localhost:3001',
+    //         ws: false,
     //         pathRewrite: {
     //             '^/api': '',
     //         },
-    //         changeOrigin: true,
-    //     }]
-    //     // '/api': {
-    //     //     target: 'http://localhost:3001',
-    //     //     pathRewrite: {
-    //     //         '^/api': '',
-    //     //     },
-    //     //     changeOrigin: true,
-    //     // },
-    // ],
+    //     }
+    // },
+    proxy: [
+        ['/api', {
+            target: 'http://localhost:3001',
+            pathRewrite: {
+                '^/api': '',
+            },
+            changeOrigin: true,
+        }]
+        // '/api': {
+        //     target: 'http://localhost:3001',
+        //     pathRewrite: {
+        //         '^/api': '',
+        //     },
+        //     changeOrigin: true,
+        // },
+    ],
     /*
   ** Headers of the page
   */
