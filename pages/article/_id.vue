@@ -29,15 +29,15 @@ export default {
             avatorSrc: config.avatorSrc,
         }
     },
-    fetch ({ store, params }) {
-        return store.dispatch('articles/getArticleById', params.id)
-                    .then((res) => {
-                        // store.commit('setStars', res.data);
-                        // console.log('前台获取结果为', res);
-                    })
-                    .catch(() => {
-                    });
-    },
+    // fetch ({ store, params }) {
+    //     return store.dispatch('articles/getArticleById', params.id)
+    //                 .then((res) => {
+    //                     // store.commit('setStars', res.data);
+    //                     // console.log('前台获取结果为', res);
+    //                 })
+    //                 .catch(() => {
+    //                 });
+    // },
     computed: {
         article () {
             // console.log('this is', this.$store);
@@ -50,6 +50,13 @@ export default {
         ]),
     },
     mounted() {
+        this.$store.dispatch('articles/getArticleById', this.$route.params.id)
+            .then((res) => {
+                // store.commit('setStars', res.data);
+                // console.log('前台获取结果为', res);
+            })
+            .catch(() => {
+            });
     }
 }
 </script>

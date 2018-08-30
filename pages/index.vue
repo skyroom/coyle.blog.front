@@ -9,7 +9,7 @@
     </div>
     <div class="article-container">
         <article-view v-if="articlesViewlist.length > 0" v-for="(item, index) in articlesViewlist" :key="index" :article="item"/>
-        <div v-if="articlesViewlist.length == 0" class="empty">
+        <div v-if="articlesViewlist.length == 0 && searchKey!= ''" class="empty">
             <span>
                 未搜索到
             </span>
@@ -35,29 +35,29 @@ export default {
             searchKey: '',
         }
     },
-    fetch ({ store, params }) {
-        console.log('开始请求');
-        // return Vue.axios({
-        //     // url: 'http://localhost:3001/blog/articles-view',
-        //     url: '/blog/articles-view',
-        //     method: 'post',
-        //     // data: data
-        // })
-        // .then((data) => {
-        //     console.log('data is', data);
-        //     // store.commit('articles/setArticlesViewlist', data.data);
-        // })
-        // .catch((err) => {
-        //     console.log('err is', err);
-        // });
-        return store.dispatch('articles/getArticlesViewList')
-                    .then((res) => {
-                        // store.commit('setStars', res.data);
-                        // console.log('前台获取结果为', res);
-                    })
-                    .catch(() => {
-                    });
-    },
+    // fetch ({ store, params }) {
+    //     console.log('开始请求');
+    //     // return Vue.axios({
+    //     //     // url: 'http://localhost:3001/blog/articles-view',
+    //     //     url: '/blog/articles-view',
+    //     //     method: 'post',
+    //     //     // data: data
+    //     // })
+    //     // .then((data) => {
+    //     //     console.log('data is', data);
+    //     //     // store.commit('articles/setArticlesViewlist', data.data);
+    //     // })
+    //     // .catch((err) => {
+    //     //     console.log('err is', err);
+    //     // });
+    //     // return store.dispatch('articles/getArticlesViewList')
+    //     //             .then((res) => {
+    //     //                 // store.commit('setStars', res.data);
+    //     //                 // console.log('前台获取结果为', res);
+    //     //             })
+    //     //             .catch(() => {
+    //     //             });
+    // },
     components: {
         InfoView,
         ArticleView
@@ -83,6 +83,13 @@ export default {
         }, 1000),
     },
     mounted() {
+        this.$store.dispatch('articles/getArticlesViewList')
+            .then((res) => {
+                // store.commit('setStars', res.data);
+                // console.log('前台获取结果为', res);
+            })
+            .catch(() => {
+            });
     }
 }
 </script>

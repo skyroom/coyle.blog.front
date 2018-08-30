@@ -4,4 +4,5 @@ export default {
     avatorSrc: '/imgs/avator.jpg',
     baseURL: '/api',
     target: 'http://localhost:3001',
+    // target: 'http://45.77.202.110:3001',
 };
