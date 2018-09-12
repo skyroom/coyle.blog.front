@@ -16,6 +16,7 @@ module.exports = {
     proxy: [
         ['/api', {
             target: 'http://localhost:3001',
+            // target: 'http://45.77.202.110:3001',
             pathRewrite: {
                 '^/api': '',
             },
@@ -80,5 +81,6 @@ module.exports = {
     plugins: [
         { src: '~/plugins/mavonEditor', ssr: false },
         { src: '~/plugins/axios', ssr: true }
-    ]
+    ],
+    // publicPath: '/blog/'
 }
